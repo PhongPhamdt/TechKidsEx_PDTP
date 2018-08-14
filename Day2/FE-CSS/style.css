@@ -1,0 +1,51 @@
+.menu{
+    background-color: #D5B0AC;
+    color: #402E2A;
+    font-weight: bold;
+    text-align: center;
+}
+
+.menu span{
+    position: relative;
+    display: inline-block;
+    height: 30px;
+    width: 100px;
+    line-height: 30px;
+}
+
+.menu span:hover{
+    background-color: #9CD08F;
+    color: #FFFFFF;
+}
+
+.submenu{
+    display: none;
+    background-color: #D5B0AC;
+    position: absolute;
+    top: 0;
+    /*left: 100px;*/
+    width: 100px;
+}
+
+.submenu .submenu{
+	display: none;
+    background-color: #D5B0AC;
+    position: absolute;
+    top: 0;
+    left: 100px;
+    width: 100px;
+}
+.submenu span{
+	position: relative;
+}
+
+.menu span:hover>.submenu {
+    display: block;
+    position: absolute;
+}
+
+.submenu span:hover>.submenu {
+    display: block;
+    position: absolute;
+}
+

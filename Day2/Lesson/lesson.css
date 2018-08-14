@@ -1,0 +1,44 @@
+/*#myDIV {
+    width: 1000px;
+    height: 1000px;
+    background: red;
+    -webkit-animation: mymove 5s infinite; /* Chrome, Safari, Opera */
+   /* animation: mymove 5s infinite;
+}*/
+/*@-webkit-keyframes mymove {
+    from {background-color: #f8aa24;}
+    to {background-color: #5460ac;}
+}*/
+.menu{
+	background-color: #D5B0AC ;
+	color:#402E2A;
+	font-weight: bold;
+	text-align: center;
+	/*text-decoration-color: #402E2A;*/
+	/*-webkit-animation: mymove 5s infinite;*/ /* Chrome, Safari, Opera */
+    /*animation: mymove 5s infinite;*/
+}
+
+.menu span{
+	height: 30px;
+    width: 100px;
+	display: inline-block;
+	text-align: center;
+	line-height: 30px;
+}
+
+.menu span:hover{
+	background-color: #9CD08F;
+  	color: #FFFFFF;
+}
+
+.menu.menu_vertical {
+	background: transparent;
+}
+.menu.menu_vertical span{
+	display: block;
+	background-color: #D5B0AC ;
+
+	/*background: transparent;*/
+}
+
