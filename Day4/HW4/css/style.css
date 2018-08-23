@@ -1,0 +1,31 @@
+.body{
+	display: flex;
+	flex-wrap: wrap;
+}
+
+.header {
+    background-color: #0000ff;
+}
+
+.nav {
+    background-color: #800080;
+    flex-basis: 100%;
+}
+
+.main {
+    background-color: #ffd700;
+    /*width: 75%;*/
+    /*float: left;*/
+    flex-basis: 75%
+}
+
+.aside {
+    background-color: #808080;
+    /*width: 25%;*/
+    /*float: right;*/
+    flex-basis: 25%
+}
+
+.footer {
+    background-color: #00ffff;
+}
