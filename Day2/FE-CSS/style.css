@@ -16,13 +16,14 @@
 .menu span:hover{
     background-color: #9CD08F;
     color: #FFFFFF;
+    cursor: pointer;
 }
 
 .submenu{
     display: none;
     background-color: #D5B0AC;
     position: absolute;
-    top: 0;
+    /*top: 0;*/
     /*left: 100px;*/
     width: 100px;
 }
