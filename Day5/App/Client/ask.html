@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+	<title>Quyết đê</title>
+</head>
+<body>
+	<nav>
+		<a href="/ask.html"> Hỏi nhanh </a>
+		<a href="/"> Đáp gọn </a>
+	</nav>
+	<h1>Hãy hỏi cộng đồng một câu hỏi đúng/sai hoặc có/không</h1>
+	<form action="http://localhost:6969/ask" method="POST">
+		<textarea id="questionInput" name="question" cols="30" rows="10" maxlength="200"></textarea>
+		<span>còn <span id="count">200</span>/200 ký tự</span>
+		<button type="submit">Gửi</button>
+	</form>
+	<!--  <script type="text/javascript">
+		const questionInput = document.getElementById('questionInput');
+		const count = document.getElementById('count');
+
+		questionInput.addEventListener("input", function() {
+			count.innerText = questionInput.getAttribute('maxlength') - questionInput.value.length;
+		});
+	</script>-->	
+	<script src="./node_modules/jquery/dist/jquery.min.js"></script>
+	<script type="text/javascript">
+		$(document).ready(function(){
+    		var maxLength = $('#questionInput').attr("maxlength");
+    		$('#questionInput').on('input', function () {
+        		var length = $(this).val().length;
+        		var curlength = maxLength - length;
+        		$('#count').text(curlength);
+    		});
+		});
+	</script>
+</body>
+</html>
