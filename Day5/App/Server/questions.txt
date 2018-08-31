@@ -1,1 +1,1 @@
-[{"question":"come on :D"},{"question":"fuck up :)"},{"question":"BB i love LUCY"},{"question":"BB i love LUCY"},{"question":"BB i love LUCY"},{"question":"BB i love LUCY"}]
+[{"id":1,"questionContent":"come on :D","yes":0,"no":0},{"id":2,"questionContent":"fuck up :)","yes":4,"no":3},{"id":3,"questionContent":"BB i love LUCY","yes":0,"no":0},{"id":4,"questionContent":"BB i love LUCY","yes":8,"no":9}]

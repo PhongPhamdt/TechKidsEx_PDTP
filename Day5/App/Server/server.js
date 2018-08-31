@@ -1,45 +1,90 @@
 const express = require('express');
-const bodyParser = require('body-parser');
 const fs = require('fs');
+const bodyParser = require('body-parser');
+const cors = require('cors');
 
 let app = express();
 
-app.use(bodyParser.urlencoded({ extended: false }))
+app.use(cors());
+app.use(bodyParser.urlencoded({ extended: false }));
 
-app.get('/', (req,res) => {
-	res.send("Hello World");
+app.get('/', (req, res) => {
+  res.send("Hello world");
 });
 
-app.post('/ask', (req,res) => {
-	// console.log("FBI WARNING!");
-// 	req.on('data', (data) => {
-// 		console.log(data);
-// 	})
-	console.log("Question :", req.body.question);
-	fs.readFile('./questions.txt', (err,fileData) => {
-		if(err) console.log(err);
-		else{
-			try{
-				console.log("File Data: " + fileData);
-				let questions = [];
-				if(fileData != "" && JSON.parse(fileData).length)
-					questions = JSON.parse(fileData);
+app.post('/ask', (req, res) => {
+  fs.readFile('./questions.txt', (err, fileData) => {
+    if(err) console.log(err)
+    else {
+      try {
+        let questions = [];
+        if(fileData.length > 0 && JSON.parse(fileData).length) {
+          questions = JSON.parse(fileData);
+        }
+        const newQuestion = {
+          id: questions.length + 1,
+          questionContent: req.body.question,
+          yes: 0,
+          no: 0
+        }
+        questions.push(newQuestion);
+        fs.writeFile('./questions.txt', JSON.stringify(questions), (err) => {
+          if(err) console.log(err)
+          else res.redirect('http://localhost:8080/');
+        });
+      } catch (error) {
+        console.log("Error: ", error);
+      }
+    }
+  });
+});
 
-				// let questions = fileData;
-				const newQuestion = {question: req.body.question};
-				questions.push(newQuestion);
-				fs.writeFile('./questions.txt', JSON.stringify(questions), (err) => {
-					if(err) console.log(err);
-					else res.redirect('http://localhost:6969/');
-				});
-			}catch(error){
-				console.log("error: ",error);
-			}
-		}
-	});
+app.get('/question', (req, res) => {
+  fs.readFile('./questions.txt', (err, fileData) => {
+    if(err) console.log(err);
+    else {
+      try {
+        let questions = JSON.parse(fileData);
+        let randomNum = Math.floor(Math.random()*questions.length);
+        let randomQuestion = questions[randomNum];
+        res.send({ message: "Success!", question: randomQuestion });
+      } catch (error) {
+        console.log("Error!!! ", error);
+      }
+    }
+  });
+});
+
+app.put('/answer', (req, res) => {
+  console.log(req.body);
+  let question = req.body;
+  fs.readFile('./questions.txt', (err, fileData) => {
+  	if(err) console.log(err);
+  	else{
+  		try{
+  			let questions = [];
+            if (fileData.length && JSON.parse(fileData).length) {
+            	questions = JSON.parse(fileData);
+            }
+                
+            if(question.answer=='yes'){
+                questions[question.id-1].yes++;
+            }else{
+                questions[question.id-1].no++;
+            }
+                
+            fs.writeFile('./questions.txt', JSON.stringify(questions), (err) => {
+                if (err) console.log(err)
+                else res.redirect('http://localhost:8080');
+            });
+  		} catch (error) {
+  			console.log("Error!!! ", error);
+  		}
+  	}
+  });
 });
 
 app.listen(6969, (err) => {
-	if(err) console.log(err);
-	else console.log("Server is listening at port 6969!");
+  if(err) console.log(err)
+  else console.log("Server is listening at port 6969!");
 });
