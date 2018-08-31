@@ -40,8 +40,8 @@ $(document).ready(function() {
   		url: 'http://localhost:6969/answer',
   		method: 'PUT',
   		data : {
-                'answer': answer,
-                'id': questionId
+                answer,
+                questionId,
             },
   		success: function(data) {
   			console.log("Success!");

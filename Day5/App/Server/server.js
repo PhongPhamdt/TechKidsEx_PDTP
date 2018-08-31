@@ -57,7 +57,7 @@ app.get('/question', (req, res) => {
 
 app.put('/answer', (req, res) => {
   console.log(req.body);
-  let question = req.body;
+  const { answer, questionId } = req.body;
   fs.readFile('./questions.txt', (err, fileData) => {
   	if(err) console.log(err);
   	else{
@@ -67,15 +67,16 @@ app.put('/answer', (req, res) => {
             	questions = JSON.parse(fileData);
             }
                 
-            if(question.answer=='yes'){
-                questions[question.id-1].yes++;
-            }else{
-                questions[question.id-1].no++;
-            }
+            // if(question.answer=='yes'){
+            //     questions[questionId-1].yes++;
+            // }else{
+            //     questions[questionId-1].no++;
+            // }
+            questions[questionId-1][answer]++;
                 
             fs.writeFile('./questions.txt', JSON.stringify(questions), (err) => {
                 if (err) console.log(err)
-                else res.redirect('http://localhost:8080');
+                else res.send({ message: "Success", questionId });
             });
   		} catch (error) {
   			console.log("Error!!! ", error);
