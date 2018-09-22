@@ -1,22 +1,40 @@
-<!DOCTYPE html>
-<html lang="vi">
-<head>
-	<meta charset="utf-8">
-	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-	<title>Quyết đê</title>
-</head>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Quyết đê</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <link rel="stylesheet" type="text/css" href="./css/style.css">
+  </head>
 <body>
-	<nav>
-		<a href="/ask.html"> Hỏi nhanh </a>
-		<a href="/"> Đáp gọn </a>
+	<nav class="navbar navbar-inverse">
+     	<div class="container-fluid">
+        	<div class="navbar-header">
+          		<a class="navbar-brand" href="#">Quyết.đê!</a>
+          			<button data-target="#item" class=" navbar-toggle" data-toggle="collapse">
+			            <span class="sr-only"></span>
+			            <span class="icon-bar"></span>
+			            <span class="icon-bar"></span>
+			            <span class="icon-bar"></span>
+          			</button>
+        	</div>  
+    		<div class="navbar-collapse collapse" id="item">
+      			<ul class="nav navbar-nav">
+        			<li class="active"><a href="/ask">Hỏi nhanh</a></li>
+        			<li><a href="/">Đáp gọn</a></li>
+      			</ul>
+    		</div>
+  		</div>
 	</nav>
-	<h1>Hãy hỏi cộng đồng một câu hỏi đúng/sai hoặc có/không</h1>
-	<form action="http://localhost:6969/ask" method="POST">
-		<textarea id="questionInput" name="question" cols="30" rows="10" maxlength="200"></textarea>
-		<span>còn <span id="count">200</span>/200 ký tự</span>
-		<button type="submit">Gửi</button>
-	</form>
+  	<div class="container">
+		<h1>Hãy hỏi cộng đồng một câu hỏi đúng/sai hoặc có/không</h1>
+		<form action="http://localhost:6969/ask" method="POST">
+			<textarea class="form-control" id="questionInput" name="question" rows="6" maxlength="200"></textarea>
+			<p class="text-muted">còn <span id="count">200</span>/200 ký tự</p>
+			<button class="btn btn-primary" type="submit">Gửi</button>
+		</form>
+	</div>
 	<!--  <script type="text/javascript">
 		const questionInput = document.getElementById('questionInput');
 		const count = document.getElementById('count');
